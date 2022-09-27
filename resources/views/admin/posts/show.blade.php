@@ -22,6 +22,7 @@
             <a href="{{ route('admin.posts.index')}}" class="btn btn-sm btn-secondary font-weight-bold"><i class="fa-solid fa-arrow-left"></i>  Torna alla lista</a>
         </div>
         <div class="d-flex align-items-center justify-content-end">
+            <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-sm btn-warning font-weight-bold mr-2"><i class="fa-regular fa-pen-to-square"></i>  Modifica</a>
             <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
                 @csrf
                 @method('DELETE')

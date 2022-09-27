@@ -31,6 +31,8 @@
                 <td>{{$post->updated_at}}</td>
                 <td class="d-flex">
                     <a href="{{ route('admin.posts.show', $post) }}" class="btn btn-sm btn-primary font-weight-bold mr-2"><i class="fa-regular fa-eye"></i>  Vedi</a>
+                    <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-sm btn-warning font-weight-bold mr-2"><i class="fa-regular fa-pen-to-square"></i>  Modifica</a>
+
                     <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" class="delete-form">
                         @csrf
                         @method('DELETE')
