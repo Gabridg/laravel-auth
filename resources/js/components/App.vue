@@ -1,7 +1,5 @@
 <template>
-    <div class="title m-b-md">
-        Coming soon...
-    </div>
+    <div class="title m-b-md">{{title}}</div>
 </template>
 
 <script>
