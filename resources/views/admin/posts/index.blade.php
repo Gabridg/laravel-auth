@@ -3,7 +3,10 @@
 @section('content')
 
 <header>
-    <h1 class="text-center">Tutti i post</h1>
+    <div class="container d-flex align-items-center justify-content-between mb-2">
+        <h1 class="text-center">TUTTI I POST</h1>
+        <a href="{{ route('admin.posts.create') }}" class=" btn btn-sm btn-success font-weight-bold"><i class="fa-solid fa-circle-plus"></i>  Crea Post</a>
+    </div>
 </header>
 <main>
     <div class="container">
@@ -28,7 +31,7 @@
                 <td>{{$post->updated_at}}</td>
                 <td class="d-flex">
                     <a href="{{ route('admin.posts.show', $post) }}" class="btn btn-sm btn-primary font-weight-bold mr-2"><i class="fa-regular fa-eye"></i>  Vedi</a>
-                    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
+                    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" class="delete-form">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-sm btn-danger font-weight-bold" type="submit"><i class="fa-regular fa-trash-can"></i>  Elimina</button>

@@ -1931,7 +1931,7 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "title m-b-md"
-  }, [_vm._v(_vm._s(_vm.title))]);
+  }, [_vm._v("COMING SOON...")]);
 };
 
 var staticRenderFns = [];

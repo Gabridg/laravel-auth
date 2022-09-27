@@ -5,5 +5,5 @@
  */
 
 require('./bootstrap');
-
-
+require('./delete_confirm');
+require('./image_preview');

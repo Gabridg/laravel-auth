@@ -37302,6 +37302,10 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./delete_confirm */ "./resources/js/delete_confirm.js");
+
+__webpack_require__(/*! ./image_preview */ "./resources/js/image_preview.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -37346,6 +37350,42 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/delete_confirm.js":
+/*!****************************************!*\
+  !*** ./resources/js/delete_confirm.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var deleteForms = document.querySelectorAll('.delete-form');
+deleteForms.forEach(function (form) {
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var hasConfirmed = confirm('Sicuro di voler eliminare questo post?');
+    if (hasConfirmed) form.submit();
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/image_preview.js":
+/*!***************************************!*\
+  !*** ./resources/js/image_preview.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var placeholder = "https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc=";
+var imageField = document.getElementById('image');
+var preview = document.getElementById('thumb');
+imageField.addEventListener('input', function () {
+  var _imageField$value;
+
+  preview.src = (_imageField$value = imageField.value) !== null && _imageField$value !== void 0 ? _imageField$value : placeholder;
+});
 
 /***/ }),
 
