@@ -19,7 +19,7 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::get('/', 'HomeController@index')->middleware('auth')->name('home');
     
     
-    // Route::resource('posts', 'PostController');
+    Route::resource('posts', 'PostController');
 
     Route::get('/{any}', function(){
         abort('404');
