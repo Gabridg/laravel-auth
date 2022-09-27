@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <header>
     <h1 class="text-center">Tutti i post</h1>
 </header>
@@ -25,7 +26,14 @@
                 <td>{{$post->slug}}</td>
                 <td>{{$post->created_at}}</td>
                 <td>{{$post->updated_at}}</td>
-                <td> </td>
+                <td class="d-flex">
+                    <a href="{{ route('admin.posts.show', $post) }}" class="btn btn-sm btn-primary font-weight-bold mr-2"><i class="fa-regular fa-eye"></i>  Vedi</a>
+                    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-sm btn-danger font-weight-bold" type="submit"><i class="fa-regular fa-trash-can"></i>  Elimina</button>
+                    </form>
+                </td>
              </tr>
              @empty
              <tr>
