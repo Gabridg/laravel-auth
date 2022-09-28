@@ -11,6 +11,7 @@
         <p>{{$post->content}}</p>
     </div>
     <div class="d-flex flex-column">
+        <p><strong>Categoria: </strong>@if($post->category) {{ $post->category->label }} @else Nessuna @endif</p>
         <time><strong>Post creato il:</strong> {{$post->created_at}}</time>
         <time><strong>Post modificato il:</strong> {{$post->updated_at}}</time>
     </div>

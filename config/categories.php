@@ -4,8 +4,8 @@ return [
     ['label'=> 'HTML', 'color'=> 'danger'],
     ['label'=> 'CSS', 'color'=> 'primary'],
     ['label'=> 'PHP', 'color'=> 'warning'],
-    ['label'=> 'JavaScript', 'color'=> 'orange'],
+    ['label'=> 'JavaScript', 'color'=> 'info'],
     ['label'=> 'VueJS', 'color'=> 'success'],
     ['label'=> 'Laravel', 'color'=> 'secondary'],
-    ['label'=> 'MySQL', 'color'=> 'purple'],
+    ['label'=> 'MySQL', 'color'=> 'light'],
 ];
