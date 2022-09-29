@@ -14,6 +14,7 @@
         <p><strong>Categoria: </strong>@if($post->category) {{ $post->category->label }} @else Nessuna @endif</p>
         <time><strong>Post creato il:</strong> {{$post->created_at}}</time>
         <time><strong>Post modificato il:</strong> {{$post->updated_at}}</time>
+        <time><strong>Autore:</strong> {{$post->author->name}}</time>
     </div>
     
     <hr>

@@ -3,6 +3,7 @@
 
 use App\User;
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
 
 class UserSeeder extends Seeder
 {
@@ -11,7 +12,7 @@ class UserSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
         $new_user = new User();
         $new_user->name = 'gabrieledg';
@@ -19,5 +20,15 @@ class UserSeeder extends Seeder
         $new_user->password = bcrypt("password");
 
         $new_user->save();
+
+        for($i = 0; $i < 9; $i++)
+        {
+            $new_user = new User();
+            $new_user->name = $faker->userName();
+            $new_user->email = $faker->safeEmail();
+            $new_user->password = bcrypt($faker->password());
+            
+            $new_user->save();
+        }
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 
 class PostController extends Controller
@@ -51,6 +52,8 @@ class PostController extends Controller
 
         $post->fill($data);
         $post->slug = Str::slug($post->title, '-');
+        
+        $post->user_id = Auth::id();
 
         $post->save();
 
@@ -92,6 +95,9 @@ class PostController extends Controller
         $data = $request->all();
 
         $data['slug'] = Str::slug($data['title'], '-');
+        
+        if($data['switch_author']) $post->user_id = Auth::id();
+
         $post->update($data);
 
         return redirect()->route('admin.posts.show', $post)->with('message', "Post modificato con successo!")->with('type', 'success');

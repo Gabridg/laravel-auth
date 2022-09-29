@@ -40,6 +40,15 @@
         <div class="col-1">
             <img src="{{ $post->image ?? "https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc=" }}" alt="image preview" id="thumb" class="img-fluid">
         </div>
+        @if($post->exists && $post->user_id !== Auth::id()) 
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="1" id="switch_author" name="switch_author" @if(old('switch_author')) checked @endif>
+                    <label class="form-check-label" for="switch_author">Diventa autore | (Autore attuale: {{ $post->author->name }})</label>
+                </div>
+            </div>
+        @endif
+          
     </div>
 
     
