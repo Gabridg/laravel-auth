@@ -96,7 +96,7 @@ class PostController extends Controller
 
         $data['slug'] = Str::slug($data['title'], '-');
         
-        if($data['switch_author']) $post->user_id = Auth::id();
+        if(array_key_exists('switch_author', $data)) $post->user_id = Auth::id();
 
         $post->update($data);
 
