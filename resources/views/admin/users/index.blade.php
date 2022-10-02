@@ -3,8 +3,7 @@
 @section('content')
 <header>
     <div class="container d-flex align-items-center justify-content-between mb-2">
-        <h1 class="text-center">TUTTI I POST</h1>
-        <a href="{{ route('admin.posts.create') }}" class=" btn btn-sm btn-success font-weight-bold"><i class="fa-solid fa-circle-plus"></i>  Crea Post</a>
+        <h1 class="text-center">TUTTI GLI UTENTI</h1>
     </div>
 </header>
 <main>
@@ -42,3 +41,5 @@
                 </tr>
                 @endforelse
             </tbody>
+</main>
+@endsection
