@@ -12,6 +12,7 @@
     </div>
     <div class="d-flex flex-column">
         <p><strong>Categoria: </strong>@if($post->category) {{ $post->category->label }} @else Nessuna @endif</p>
+        <p><strong>Tags: </strong> @forelse($post->tags as $tag) <span class="badge" style="border: 2px solid {{ $tag->color }}">{{ $tag->label }}</span> @empty Nessun Tag @endforelse</p>
         <time><strong>Post creato il:</strong> {{$post->created_at}}</time>
         <time><strong>Post modificato il:</strong> {{$post->updated_at}}</time>
         <time><strong>Autore:</strong> {{$post->author->name}}</time>

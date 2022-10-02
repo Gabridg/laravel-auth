@@ -17,6 +17,7 @@
                 <th scope="col">Titolo</th>
                 <th scope="col">Autore</th>
                 <th scope="col">Categoria</th>
+                <th scope="col">Tags</th>
                 <th scope="col">Slug</th>
                 <th scope="col">Creato il</th>
                 <th scope="col">Modificato il</th>
@@ -36,6 +37,7 @@
                     @endif
                     </td>
                 <td>@if($post->category)<span class="badge badge-pill badge-{{ $post->category->color ?? 'green'}}">{{ $post->category->label }}</span> @else Nessuna @endif</td>
+                <td>@forelse($post->tags as $tag) <span class="badge" style="border: 2px solid {{ $tag->color }}">{{ $tag->label }}</span> @empty Nessun Tag @endforelse</td>
                 <td>{{$post->slug}}</td>
                 <td>{{$post->created_at}}</td>
                 <td>{{$post->updated_at}}</td>

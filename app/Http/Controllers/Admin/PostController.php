@@ -59,6 +59,8 @@ class PostController extends Controller
 
         $post->save();
 
+        if(array_key_exists('tags', $data)) $post->tags()->attach($data['tags']);
+
         return redirect()->route('admin.posts.show', $post)->with('message', "Post creato con successo!")->with('type', 'success');
     }
 
@@ -82,7 +84,9 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view('admin.posts.edit', compact('post','categories'));
+        $tags = Tag::select('id', 'label')->get();
+        $prev_tags = $post->tags->pluck('id')->toArray();
+        return view('admin.posts.edit', compact('post','categories','tags', 'prev_tags'));
     }
 
     /**
@@ -99,9 +103,13 @@ class PostController extends Controller
         $data['slug'] = Str::slug($data['title'], '-');
         
         if(array_key_exists('switch_author', $data)) $post->user_id = Auth::id();
-
+        
         $post->update($data);
-
+        
+        if(!array_key_exists('tags', $data)) $post->tags()->detach();
+        else $post->tags()->sync($data['tags']);
+        
+        
         return redirect()->route('admin.posts.show', $post)->with('message', "Post modificato con successo!")->with('type', 'success');
     }
 
@@ -113,6 +121,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if(count($post->tags)) $post->tags->detach();
+
         $post->delete();
 
         return redirect()->route('admin.posts.index')->with('message', 'Il post è stato eliminato con successo!')->with('type','warning');

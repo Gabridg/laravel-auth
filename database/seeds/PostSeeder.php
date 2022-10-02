@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
@@ -20,6 +21,7 @@ class PostSeeder extends Seeder
     {
         $category_ids = Category::pluck('id')->toArray();
         $user_ids = User::pluck('id')->toArray();
+        $tag_ids = Tag::pluck('id')->toArray();
 
         for($i = 0; $i < 10; $i++){
             $new_post=new Post();
@@ -32,6 +34,14 @@ class PostSeeder extends Seeder
 
 
             $new_post->save();
+
+            $post_tags = [];
+            foreach($tag_ids as $tag_id)
+            {
+                if(rand(0,1)) $post_tags[] = $tag_id;
+            }
+
+            $new_post->tags()->attach($post_tags);
         }
     }
 }
