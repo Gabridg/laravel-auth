@@ -48,7 +48,19 @@
                 </div>
             </div>
         @endif
-          
+        @if(count($tags))
+        <fieldset>
+            <div class="col-12">
+                <h2>Tags: </h2>
+                @foreach($tags as $tag)
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="{{ $tag->id }}" id="{{ $tag->label }}" name="tags[]">
+                    <label class="form-check-label" for="{{ $tag->label }}">{{ $tag->label }}</label>
+                </div>
+                @endforeach
+            </div>
+        </fieldset>
+        @endif
     </div>
 
     
